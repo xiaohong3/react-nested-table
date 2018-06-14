@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import './DataTable.css';
 import DetailForm1 from './DetailForm1';
+import Link from 'react-router-dom/Link';
+import { Route } from 'react-router';
 
 class DataTable extends Component {
     constructor(props) {
@@ -65,10 +67,12 @@ class TableRow extends Component {
             <td>{this.props.row.description}</td>
             <td>
                 <button className="btn btn-sm btn-secondary" onClick={this.handleEditClick.bind(this, this.props.row.id)}>Edit</button>
+                <Link to={`/${this.props.row.id}`}></Link>
             </td>
             <td>
                 <button className="btn btn-sm btn-danger" onClick={this.handleDeleteClick.bind(this)}>Delete</button>
             </td>
+            <Route path={`/:id`} component={DetailForm1} />
         </tr>;
         if (this.props.edit) {
             return <Fragment>
