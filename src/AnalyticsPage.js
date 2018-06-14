@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import DataTable from './DataTable';
 
 class AnalyticsPage extends Component {
-    render() {
-        const data = [
+    constructor(props) {
+        super(props);
+        const mockData = [
             {
                 id: 2,
                 name: 'Entry 1',
@@ -15,10 +16,16 @@ class AnalyticsPage extends Component {
                 description: 'This is some testing data 3'
             }
         ];
+        this.state = {
+            data: mockData
+        };
+    }
+
+    render() {
         let dataTableWrapper;
 
-        if (data.length > 0) {
-            dataTableWrapper = <DataTable data={data} />;
+        if (this.state.data.length > 0) {
+            dataTableWrapper = <DataTable data={this.state.data} />;
         } else {
             dataTableWrapper = <div>No data available.</div>
         }
